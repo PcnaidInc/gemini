@@ -3,6 +3,13 @@
 The Gemini API has [Free](https://ai.google.dev/gemini-api/docs/pricing#free) Tier
 with *generous limits*, but there are still many tools that work exclusively with the OpenAI API.
 
+## CI
+
+This repository uses a GitHub Actions workflow (`.github/workflows/ci.yml`) that runs on every
+pull request and on pushes to `main`. It performs a JavaScript syntax check (`node --check`) on all
+source entry points to catch parse errors before they merge. It does not build, deploy, or require
+any secrets.
+
 This project provides a personal OpenAI-compatible endpoint for free.
 
 
