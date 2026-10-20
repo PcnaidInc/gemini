@@ -22,8 +22,6 @@ jobs:
           node-version: 20
       - name: Check JavaScript syntax
         run: |
-          node --check node.mjs
-          node --check deno.mjs
-          node --check bun.mjs
-          node --check src/worker.mjs
-          node --check api/handler.mjs
+          # Check every tracked JavaScript module, including the Netlify
+          # deployment entry points, so a parse error cannot slip past CI.
+          git ls-files -z '*.mjs' '*.js' '*.cjs' | xargs -0 -n1 node --check
